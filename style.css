@@ -1,0 +1,269 @@
+/* ============================================
+   MoodMeal — style.css
+   Tema: trattoria moderna, caldo e autentico
+   ============================================ */
+
+:root {
+  --cream: #fdf6ec;
+  --rust: #c0392b;
+  --gold: #e67e22;
+  --dark: #2c1810;
+  --mid: #7f4f31;
+  --light-mid: #d4a574;
+  --white: #ffffff;
+  --shadow: 0 4px 24px rgba(44,24,16,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--cream);
+  color: var(--dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background: var(--dark);
+  color: var(--cream);
+  text-align: center;
+  padding: 2.5rem 1rem 2rem;
+  border-bottom: 4px solid var(--gold);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--gold);
+}
+
+.tagline {
+  margin-top: 0.4rem;
+  font-style: italic;
+  color: var(--light-mid);
+  font-size: 1.05rem;
+}
+
+/* MAIN */
+main {
+  flex: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2.5rem 1.2rem;
+  width: 100%;
+}
+
+/* MOOD PICKER */
+.mood-picker h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 1.4rem;
+  text-align: center;
+  color: var(--mid);
+}
+
+.moods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+}
+
+.mood-btn {
+  background: var(--white);
+  border: 2px solid var(--light-mid);
+  border-radius: 12px;
+  padding: 1rem 0.5rem;
+  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--dark);
+  font-weight: 500;
+}
+
+.mood-btn:hover {
+  border-color: var(--gold);
+  background: #fef3e2;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.mood-btn.active {
+  background: var(--rust);
+  border-color: var(--rust);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* RESULT BOX */
+.result-box {
+  margin-top: 2.5rem;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid #e8d5b7;
+}
+
+/* SPINNER */
+.spinner {
+  text-align: center;
+  font-size: 3rem;
+  animation: spin 1s linear infinite;
+  padding: 2rem 0;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* RECIPE CARD */
+.recipe-card {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-emoji {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  text-align: center;
+  color: var(--rust);
+  margin-bottom: 0.6rem;
+}
+
+.mood-message {
+  text-align: center;
+  font-style: italic;
+  color: var(--mid);
+  margin-bottom: 1.2rem;
+  font-size: 0.97rem;
+}
+
+.meta {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 1.4rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.ingredients h4, .steps h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #e8d5b7;
+  padding-bottom: 0.3rem;
+}
+
+.ingredients ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.4rem;
+}
+
+.ingredients ul li {
+  background: #fef3e2;
+  border: 1px solid var(--light-mid);
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.88rem;
+}
+
+.steps ol {
+  padding-left: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.steps ol li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* RAW JSON */
+.raw-json details summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--mid);
+  margin-top: 1rem;
+}
+
+.raw-json pre {
+  background: #f0ebe4;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 0.78rem;
+  overflow-x: auto;
+  margin-top: 0.5rem;
+  color: var(--dark);
+}
+
+/* API INFO */
+.api-info {
+  margin-top: 2rem;
+}
+
+.api-info details summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--mid);
+  font-size: 0.95rem;
+  padding: 0.6rem 0;
+}
+
+.api-info pre {
+  background: var(--dark);
+  color: #a8d5a2;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 0.82rem;
+  margin-top: 0.6rem;
+  overflow-x: auto;
+}
+
+/* ERROR */
+.error {
+  text-align: center;
+  color: var(--rust);
+  font-style: italic;
+}
+
+/* FOOTER */
+footer {
+  background: var(--dark);
+  color: var(--light-mid);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.82rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+  .moods { grid-template-columns: repeat(2, 1fr); }
+  .logo { font-size: 2rem; }
+  .meta { flex-direction: column; gap: 0.4rem; align-items: center; }
+}
